@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f4f4;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto; /*to center the container of 1200px*/
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.wrapper h1 {
+  margin: 20px auto;
+  text-align: center;
+  font-size: 40px;
+  color: rgb(51, 51, 51);
+}
+
+.card {
+  width: 32%; /*card container will be 32% take ek row me 3 card aa sake but images might overflow*/
+  overflow: hidden; /*to remove image overflow*/
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  position: relative; /*iske andar ke text ko absolute krna hai*/
+  transition: 0.5s;
+  display: flex; /*ye karne se iske card ke andar 2 elements h ek image doosra text,dono side by side flex row items jaise align hogye instead of image ke neeche caption*/
+  justify-content: center; /*to center the items*/
+  align-items: center; /*figcaption bhi center me krdega ye*/
+}
+
+.card img {
+  height: 100%;
+  width: 100%; /*is se sab images choti hojayegi kyuki image 32% width me apni total width layegi uske vajah se height bhi down jayegi*/
+  filter: grayscale(100%); /*gray filter applied*/
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 10px #333); /*box ke around shadow created*/
+}
+
+.card:hover img {
+  filter: grayscale(
+    0
+  ); /*ye humne upar wale me nhi kiya kyuki filter image pe apply hai and drop-shadow card pe apply krna h*/
+}
+
+.card figcaption {
+  position: absolute; /*to make text come above the image*/
+  bottom: 0;
+  width: fit-content;
+  height: 16%;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  color: #fff;
+  padding: 25px;
+  opacity: 0; /*Normally text visible na rahe*/
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.card:hover figcaption {
+  opacity: 1; /*hover krne pe visibile hojaye*/
+  bottom: 40%;
+  transform: translateY(-50%) rotate(360deg); /*translate isko thoda aur upar le jayega and rotate effect provide krega jab botton 0 se bottom 40% hoga*/
+  transition: 1s; /*effect dikhega transition time ki vajah se vrna drastic dicrete change hojayega w/o any effect*/
+}

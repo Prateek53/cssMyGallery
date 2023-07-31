@@ -1,0 +1,85 @@
+/*Note that all the images are of same dimensions to make things easier*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f4f4;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px;
+}
+
+.wrapper h1 {
+  margin: 20px auto;
+  text-align: center;
+  font-size: 40px;
+  color: rgb(51, 51, 51);
+}
+
+.card {
+  width: 100%; /*need to make it 32% cuz already 3 cols dal diye h*/
+  border-radius: 10px;
+  position: relative;
+  transition: 0.5s;
+  display: flex; /*ye karne se iske card ke andar 2 elements h ek image doosra text,dono side by side flex row items jaise align hogye instead of image ke neeche caption*/
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  border-radius: 10px;
+  height: 100%;
+  width: 100%; /*size of image changes*/
+  filter: grayscale(100%);
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 10px #333);
+}
+
+.card:hover img {
+  filter: grayscale(0);
+}
+
+.card figcaption {
+  position: absolute; /*text ab overlap krega image ko instead of row wise uske next place hone ke*/
+  bottom: 0;
+  width: fit-content;
+  height: 16%;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  color: #fff;
+  padding: 25px;
+  opacity: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.card:hover figcaption {
+  opacity: 1;
+  bottom: 40%;
+  color: white;
+  transform: translateY(-50%) rotate(360deg) skew(-10deg);
+  transition: 1s;
+}
